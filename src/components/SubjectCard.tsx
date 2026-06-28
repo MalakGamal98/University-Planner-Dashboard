@@ -29,10 +29,10 @@ export function SubjectCard({
           <h3 className="text-lg font-bold text-foreground line-clamp-1">{subject.name}</h3>
         </div>
         <div className="flex gap-1">
-          <Button variant="ghost" size="sm" onClick={() => onEdit(subject)} aria-label="Edit subject">
+          <Button variant="ghost" size="sm" onClick={() => onEdit(subject)} title="Edit subject" aria-label="Edit subject" className="cursor-pointer">
             <IoPencilOutline className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="sm" onClick={() => onDelete(subject.id)} className="text-error hover:bg-error-bg" aria-label="Delete subject">
+          <Button variant="ghost" size="sm" onClick={() => onDelete(subject.id)} className="text-error hover:bg-error-bg cursor-pointer" title="Delete subject" aria-label="Delete subject">
             <IoTrashOutline className="h-4 w-4" />
           </Button>
         </div>

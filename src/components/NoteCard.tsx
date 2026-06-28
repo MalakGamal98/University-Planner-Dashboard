@@ -16,10 +16,10 @@ export function NoteCard({ note, onEdit, onDelete }: NoteCardProps) {
         <div className="flex justify-between items-start gap-4">
           <h3 className="text-base font-bold text-foreground line-clamp-1">{note.title}</h3>
           <div className="flex gap-1 shrink-0">
-            <Button variant="ghost" size="sm" onClick={() => onEdit(note)} aria-label="Edit note">
+            <Button variant="ghost" size="sm" onClick={() => onEdit(note)} title="Edit note" aria-label="Edit note" className="cursor-pointer">
               <IoPencilOutline className="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="sm" onClick={() => onDelete(note.id)} className="text-error hover:bg-error-bg" aria-label="Delete note">
+            <Button variant="ghost" size="sm" onClick={() => onDelete(note.id)} className="text-error hover:bg-error-bg cursor-pointer" title="Delete note" aria-label="Delete note">
               <IoTrashOutline className="h-4 w-4" />
             </Button>
           </div>

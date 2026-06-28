@@ -51,10 +51,10 @@ export function ExamCard({ exam, subject, onEdit, onDelete }: ExamCardProps) {
           </div>
 
           <div className="flex gap-1 shrink-0">
-            <Button variant="ghost" size="sm" onClick={() => onEdit(exam)} aria-label="Edit exam">
+            <Button variant="ghost" size="sm" onClick={() => onEdit(exam)} title="Edit exam" aria-label="Edit exam" className="cursor-pointer">
               <IoPencilOutline className="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="sm" onClick={() => onDelete(exam.id)} className="text-error hover:bg-error-bg" aria-label="Delete exam">
+            <Button variant="ghost" size="sm" onClick={() => onDelete(exam.id)} className="text-error hover:bg-error-bg cursor-pointer" title="Delete exam" aria-label="Delete exam">
               <IoTrashOutline className="h-4 w-4" />
             </Button>
           </div>

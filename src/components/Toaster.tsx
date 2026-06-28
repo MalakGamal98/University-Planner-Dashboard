@@ -40,9 +40,9 @@ function ToastItem({ id, message, variant, duration }: {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 16, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: -8, scale: 0.95 }}
+      initial={{ opacity: 0, x: 50, scale: 0.95 }}
+      animate={{ opacity: 1, x: 0, scale: 1 }}
+      exit={{ opacity: 0, x: 50, scale: 0.95 }}
       transition={{ duration: 0.2 }}
       className={cn(
         'flex items-center gap-3 rounded-lg border px-4 py-3 shadow-md',
@@ -55,7 +55,7 @@ function ToastItem({ id, message, variant, duration }: {
       <button
         type="button"
         onClick={() => removeToast(id)}
-        className="shrink-0 rounded-md p-0.5 opacity-70 transition-opacity hover:opacity-100"
+        className="shrink-0 rounded-md p-0.5 opacity-70 transition-opacity hover:opacity-100 cursor-pointer"
         aria-label="Dismiss notification"
       >
         <IoClose className="h-4 w-4" />

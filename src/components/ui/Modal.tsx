@@ -77,7 +77,7 @@ export function Modal({
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
             className={cn(
-              'relative z-10 w-full rounded-xl border border-border bg-surface p-6 shadow-lg',
+              'relative z-10 w-full rounded-xl border border-border bg-surface p-6 shadow-lg overflow-y-auto max-h-[90vh]',
               sizeStyles[size],
             )}
           >

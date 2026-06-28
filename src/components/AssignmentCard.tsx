@@ -70,10 +70,10 @@ export function AssignmentCard({
           </div>
           
           <div className="flex gap-1 shrink-0">
-            <Button variant="ghost" size="sm" onClick={() => onEdit(assignment)} aria-label="Edit assignment">
+            <Button variant="ghost" size="sm" onClick={() => onEdit(assignment)} title="Edit assignment" aria-label="Edit assignment" className="cursor-pointer">
               <IoPencilOutline className="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="sm" onClick={() => onDelete(assignment.id)} className="text-error hover:bg-error-bg" aria-label="Delete assignment">
+            <Button variant="ghost" size="sm" onClick={() => onDelete(assignment.id)} className="text-error hover:bg-error-bg cursor-pointer" title="Delete assignment" aria-label="Delete assignment">
               <IoTrashOutline className="h-4 w-4" />
             </Button>
           </div>

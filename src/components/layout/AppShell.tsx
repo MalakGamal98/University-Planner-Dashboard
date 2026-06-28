@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { Sidebar } from './Sidebar'
 import { Navbar } from './Navbar'
@@ -15,12 +16,17 @@ const pageTitles: Record<string, { title: string; subtitle?: string }> = {
 export function AppShell() {
   const { pathname } = useLocation()
   const pageInfo = pageTitles[pathname] ?? { title: 'Page' }
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
 
   return (
     <div className="flex h-svh overflow-hidden">
-      <Sidebar />
+      <Sidebar mobileOpen={mobileSidebarOpen} onClose={() => setMobileSidebarOpen(false)} />
       <div className="flex min-w-0 flex-1 flex-col">
-        <Navbar title={pageInfo.title} subtitle={pageInfo.subtitle} />
+        <Navbar
+          title={pageInfo.title}
+          subtitle={pageInfo.subtitle}
+          onMenuClick={() => setMobileSidebarOpen(true)}
+        />
         <PageWrapper>
           <Outlet />
         </PageWrapper>

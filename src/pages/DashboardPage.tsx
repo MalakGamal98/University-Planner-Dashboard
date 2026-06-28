@@ -22,6 +22,19 @@ import { formatDate } from '@/lib/utils'
 import { cn } from '@/lib/cn'
 import type { Exam } from '@/types/exam'
 import type { Subject } from '@/types/subject'
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
+
+function CountUp({ value }: { value: number }) {
+  const count = useMotionValue(0)
+  const rounded = useTransform(count, Math.round)
+
+  useEffect(() => {
+    const controls = animate(count, value, { duration: 1, ease: 'easeOut' })
+    return () => controls.stop()
+  }, [value, count])
+
+  return <motion.span>{rounded}</motion.span>
+}
 
 function ExamCountdownWidget({ exam, subject }: { exam: Exam; subject?: Subject }) {
   const { days, hours, minutes, seconds } = useCountdown(exam.date)
@@ -292,7 +305,7 @@ export function DashboardPage() {
             <IoBookOutline className="h-6 w-6" />
           </div>
           <div>
-            <p className="text-xl font-bold text-foreground">{stats.subjectsCount}</p>
+            <p className="text-xl font-bold text-foreground"><CountUp value={stats.subjectsCount} /></p>
             <p className="text-xs text-muted">Total Subjects</p>
           </div>
         </Card>
@@ -302,7 +315,7 @@ export function DashboardPage() {
             <IoClipboardOutline className="h-6 w-6" />
           </div>
           <div>
-            <p className="text-xl font-bold text-foreground">{stats.assignmentsCount}</p>
+            <p className="text-xl font-bold text-foreground"><CountUp value={stats.assignmentsCount} /></p>
             <p className="text-xs text-muted">Total Coursework</p>
           </div>
         </Card>
@@ -312,7 +325,7 @@ export function DashboardPage() {
             <IoCheckmarkCircleOutline className="h-6 w-6" />
           </div>
           <div>
-            <p className="text-xl font-bold text-foreground">{stats.completedAssignments}</p>
+            <p className="text-xl font-bold text-foreground"><CountUp value={stats.completedAssignments} /></p>
             <p className="text-xs text-muted">Completed</p>
           </div>
         </Card>
@@ -322,7 +335,7 @@ export function DashboardPage() {
             <IoSchoolOutline className="h-6 w-6" />
           </div>
           <div>
-            <p className="text-xl font-bold text-foreground">{stats.upcomingExams}</p>
+            <p className="text-xl font-bold text-foreground"><CountUp value={stats.upcomingExams} /></p>
             <p className="text-xs text-muted">Upcoming Exams</p>
           </div>
         </Card>
@@ -426,7 +439,7 @@ export function DashboardPage() {
               <IoSchoolOutline className="h-8 w-8 text-muted mb-2" />
               <h4 className="text-sm font-semibold text-foreground">No upcoming exams</h4>
               <p className="text-[11px] text-muted-foreground mt-1">Take it easy! No exams scheduled for now.</p>
-              <Button size="sm" className="mt-3.5 text-xs py-1 px-3 h-8" onClick={() => navigate('/exams')}>Schedule Exam</Button>
+              <Button size="sm" className="mt-3.5 text-xs py-1 px-3 h-8 cursor-pointer" onClick={() => navigate('/exams')}>Schedule Exam</Button>
             </Card>
           )}
 
