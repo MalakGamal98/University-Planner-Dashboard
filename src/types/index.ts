@@ -4,7 +4,7 @@ export type { Exam } from './exam'
 export type { Note } from './note'
 export type {
   Settings,
-  ThemePreference,
+  ThemeMode,
   DefaultView,
   NotificationSettings,
 } from './settings'

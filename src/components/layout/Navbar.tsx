@@ -1,5 +1,6 @@
 import { IoMoonOutline, IoSunnyOutline, IoSearchOutline } from 'react-icons/io5'
-import { useThemeStore } from '@/store/themeStore'
+import { useSettingsStore } from '@/store/settingsStore'
+import { toggleThemeMode } from '@/lib/theme'
 import { Button } from '@/components/ui'
 
 interface NavbarProps {
@@ -8,7 +9,11 @@ interface NavbarProps {
 }
 
 export function Navbar({ title, subtitle }: NavbarProps) {
-  const { theme, toggleTheme } = useThemeStore()
+  const { theme, updateSettings } = useSettingsStore()
+
+  const handleToggleTheme = () => {
+    updateSettings({ theme: toggleThemeMode(theme) })
+  }
 
   return (
     <header className="flex h-16 shrink-0 items-center justify-between border-b border-border bg-surface px-6">
@@ -31,7 +36,7 @@ export function Navbar({ title, subtitle }: NavbarProps) {
         <Button
           variant="ghost"
           size="sm"
-          onClick={toggleTheme}
+          onClick={handleToggleTheme}
           aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? (

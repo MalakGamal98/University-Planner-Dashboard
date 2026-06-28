@@ -9,6 +9,8 @@ export { examSchema, type ExamFormData } from './exam'
 export { noteSchema, type NoteFormData } from './note'
 export {
   settingsSchema,
+  settingsFormSchema,
+  themeModeSchema,
   themePreferenceSchema,
   defaultViewSchema,
   notificationSettingsSchema,
